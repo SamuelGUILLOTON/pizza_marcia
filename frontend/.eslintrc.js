@@ -20,5 +20,7 @@ module.exports = {
     "object-shorthand": "off",
     "class-methods-use-this": "off",
     "react/jsx-filename-extension": 0,
+    indent: ["error", 2],
+    quotes: ["error", "double"],
   },
 };
