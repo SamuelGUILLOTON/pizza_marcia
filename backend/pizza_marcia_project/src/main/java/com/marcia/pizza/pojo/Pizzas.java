@@ -1,4 +1,4 @@
-package com.example.demo.pojo;
+package com.marcia.pizza.pojo;
 
 import javax.persistence.*;
 
