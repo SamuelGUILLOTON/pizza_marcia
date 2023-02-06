@@ -1,4 +1,4 @@
-package com.example.demo.configuration;
+package com.marcia.pizza.configuration;
 
 import org.springframework.beans.factory.annotation.Configurable;
 

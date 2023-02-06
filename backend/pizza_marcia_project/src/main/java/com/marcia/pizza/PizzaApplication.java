@@ -1,17 +1,13 @@
-package com.example.demo;
+package com.marcia.pizza;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
 @SpringBootApplication
-public class DemoApplication {
+public class PizzaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(PizzaApplication.class, args);
 	}
 
 }
