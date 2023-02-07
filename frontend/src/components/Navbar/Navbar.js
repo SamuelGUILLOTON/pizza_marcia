@@ -5,7 +5,9 @@ import "./Navbar.css";
 function Navbar() {
   return (
     <div className="navbar-container">
-      <h1 className="navbar-title">Pizza Marcia</h1>
+      <Link to="/" className="navbar-title-link">
+        <h1 className="navbar-title">Pizza Marcia</h1>
+      </Link>
       <ul className="navbar-item-list">
         <li className="navbar-item">
           <Link className="navbar-link" to="/catalog">
@@ -13,13 +15,8 @@ function Navbar() {
           </Link>
         </li>
         <li className="navbar-item">
-          <Link className="navbar-link" to="/pizzas/add">
+          <Link className="navbar-link" to="/pizzas/create">
             Add a Pizza
-          </Link>
-        </li>
-        <li className="navbar-item">
-          <Link className="navbar-link" to="/ingredients">
-            Ingredients
           </Link>
         </li>
       </ul>

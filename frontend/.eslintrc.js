@@ -30,5 +30,7 @@ module.exports = {
         peerDependencies: false,
       },
     ],
+    "react/forbid-prop-types": 0,
+    "linebreak-style": ["error", "windows"],
   },
 };
