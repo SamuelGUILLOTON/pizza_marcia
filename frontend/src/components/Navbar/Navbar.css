@@ -25,4 +25,14 @@ body {
 
 .navbar-title {
   color: #fff;
+  transition: all 0.1s;
+}
+
+.navbar-title-link {
+  text-decoration: none;
+}
+
+.navbar-title:hover {
+  color: rgb(180, 132, 224);
+  transition: all 0.1s;
 }

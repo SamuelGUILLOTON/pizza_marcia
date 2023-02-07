@@ -1,0 +1,9 @@
+.pizza-edit-form-container {
+  display: flex;
+  align-items: center;
+}
+
+.pizza-edit-form-input {
+  width: 500px;
+  border-radius: 8px;
+}
