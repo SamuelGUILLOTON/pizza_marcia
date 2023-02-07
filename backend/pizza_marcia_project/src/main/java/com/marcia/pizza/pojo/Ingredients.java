@@ -1,12 +1,10 @@
 package com.marcia.pizza.pojo;
 
-import org.w3c.dom.Text;
-
 import javax.persistence.*;
 
 @Entity
-@Table(name = "pizzas")
-public class Pizzas {
+@Table(name = "ingredients")
+public class Ingredients {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,18 +14,15 @@ public class Pizzas {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "price", nullable = false)
-    private Integer price;
-
     @Column(name = "image", nullable = true)
     private String image;
 
-    public Pizzas(String name, Integer price, Integer ingredients_id) {
+    public Ingredients(String name) {
+
         this.name = name;
-        this.price = price;
     }
 
-    public Pizzas() {
+    public Ingredients() {
 
     }
 
@@ -44,16 +39,6 @@ public class Pizzas {
     public void setName(String name) {
 
         this.name = name;
-    }
-
-    public Integer getPrice() {
-
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-
-        this.price = price;
     }
 
     public String getImage() {
