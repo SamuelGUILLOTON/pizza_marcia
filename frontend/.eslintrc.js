@@ -22,5 +22,13 @@ module.exports = {
     "react/jsx-filename-extension": 0,
     indent: ["error", 2],
     quotes: ["error", "double"],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        devDependencies: false,
+        optionalDependencies: false,
+        peerDependencies: false,
+      },
+    ],
   },
 };

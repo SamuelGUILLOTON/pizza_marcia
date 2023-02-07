@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(20, 20, 20);
+  align-items: center;
+}
+
+.navbar-item-list {
+  list-style-type: none;
+  display: flex;
+}
+
+.navbar-item {
+  margin: 0 1em;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.navbar-title {
+  color: #fff;
+}
