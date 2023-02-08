@@ -1,6 +1,9 @@
 package com.marcia.pizza.pojo;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "ingredients")
@@ -8,7 +11,7 @@ public class Ingredients {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name", nullable = false)
@@ -17,6 +20,9 @@ public class Ingredients {
     @Column(name = "image", nullable = true)
     private String image;
 
+    @ManyToMany(mappedBy = "ingredients", fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Set<Pizzas> pizzas;
     public Ingredients(String name) {
 
         this.name = name;
@@ -49,6 +55,14 @@ public class Ingredients {
     public void setImage(String image) {
 
         this.image = image;
+    }
+
+    public Set<Pizzas> getPizzas() {
+        return pizzas;
+    }
+
+    public void setPizzas(Set<Pizzas> pizzas) {
+        this.pizzas = pizzas;
     }
 
 }

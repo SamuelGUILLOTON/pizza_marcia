@@ -3,6 +3,7 @@ package com.marcia.pizza.ws;
 import com.marcia.pizza.pojo.Pizzas;
 import com.marcia.pizza.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class PizzasWs {
         return pizzaService.getPizzaById(id);
     }
 
-    @PostMapping
+    @PostMapping(consumes={"application/json"})
     public void createPizza(@RequestBody Pizzas pizza){
 
         pizzaService.createPizza(pizza);
