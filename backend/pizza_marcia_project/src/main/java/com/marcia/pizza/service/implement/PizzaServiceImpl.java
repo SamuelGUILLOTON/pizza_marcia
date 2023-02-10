@@ -6,6 +6,7 @@ import com.marcia.pizza.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,6 +26,16 @@ public class PizzaServiceImpl implements PizzaService {
     }
 
     @Override
+    public List<Pizzas> findPizzasByNameLike(String name) {
+        List<Pizzas>  pizzaName = pizzaRepository.findByNameLike('%'+name+'%');
+        if (pizzaName != null) {
+            return pizzaName;
+        } else {
+            return new ArrayList<Pizzas>();
+        }
+    }
+
+    @Override
     public void createPizza(Pizzas pizza) {
         pizzaRepository.save(pizza);
     }
@@ -35,7 +46,6 @@ public class PizzaServiceImpl implements PizzaService {
         updatedPizza.setName(pizza.getName());
         pizzaRepository.save(updatedPizza);
     }
-
     @Override
     public void deletePizza(Long id) {
         pizzaRepository.deleteById(id);

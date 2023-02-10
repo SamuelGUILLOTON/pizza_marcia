@@ -10,6 +10,8 @@ public interface PizzaService {
 
     Pizzas getPizzaById(Long id);
 
+    List<Pizzas> findPizzasByNameLike(String name);
+
     void createPizza(Pizzas pizza);
 
     void updatePizza(Pizzas pizza, Long id);

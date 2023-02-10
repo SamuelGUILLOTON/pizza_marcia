@@ -26,6 +26,11 @@ public class PizzasWs {
         return pizzaService.getPizzaById(id);
     }
 
+    @GetMapping("/search/{name}")
+    public List<Pizzas> getPizzaByNameContains(@PathVariable("name") String name) {
+        return pizzaService.findPizzasByNameLike(name);
+    }
+
     @PostMapping(consumes={"application/json"})
     public void createPizza(@RequestBody Pizzas pizza){
 
@@ -33,10 +38,10 @@ public class PizzasWs {
     }
 
     @PutMapping("/{id}")
-    public void updatePizza(@RequestBody Pizzas pizza,
+    public boolean updatePizza(@RequestBody Pizzas pizza,
                                 @PathVariable("id") Long id){
         pizzaService.updatePizza(pizza,id);
-
+        return true;
     }
 
     @DeleteMapping("/{id}")
