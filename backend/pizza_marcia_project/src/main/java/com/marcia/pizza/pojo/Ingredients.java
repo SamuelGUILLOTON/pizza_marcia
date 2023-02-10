@@ -10,7 +10,7 @@ import java.util.Set;
 public class Ingredients {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -20,8 +20,6 @@ public class Ingredients {
     @Column(name = "image", nullable = true)
     private String image;
 
-    @ManyToMany(mappedBy = "ingredients", fetch = FetchType.LAZY)
-    private Set<Pizzas> pizzas;
     public Ingredients(String name) {
 
         this.name = name;
@@ -54,14 +52,6 @@ public class Ingredients {
     public void setImage(String image) {
 
         this.image = image;
-    }
-
-    public Set<Pizzas> getPizzas() {
-        return pizzas;
-    }
-
-    public void setPizzas(Set<Pizzas> pizzas) {
-        this.pizzas = pizzas;
     }
 
 }

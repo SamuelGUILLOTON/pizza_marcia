@@ -1,11 +1,13 @@
 package com.marcia.pizza.service.implement;
 
 import com.marcia.pizza.pojo.Ingredients;
+import com.marcia.pizza.pojo.Pizzas;
 import com.marcia.pizza.repository.IngredientRepository;
 import com.marcia.pizza.service.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,9 +26,19 @@ public class IngredientServiceImpl implements IngredientService {
         return ingredientRepository.findById(id).orElse(null);
     }
 
+    public List<Ingredients> findIngredientByNameLike(String name) {
+        List<Ingredients> ingredientName = ingredientRepository.findByNameLike('%'+name+'%');
+        if (ingredientName != null) {
+            return ingredientName;
+        } else {
+            return new ArrayList<Ingredients>();
+        }
+    }
+
     @Override
     public void createIngredient(Ingredients ingredient) {
         ingredientRepository.save(ingredient);
+
     }
 
     @Override

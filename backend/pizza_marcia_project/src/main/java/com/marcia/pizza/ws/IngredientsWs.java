@@ -1,6 +1,7 @@
 package com.marcia.pizza.ws;
 
 import com.marcia.pizza.pojo.Ingredients;
+import com.marcia.pizza.pojo.Pizzas;
 import com.marcia.pizza.service.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,11 @@ public class IngredientsWs {
     public Ingredients getIngredientById(@PathVariable("id") Long id){
 
         return ingredientsService.getIngredientById(id);
+    }
+
+    @GetMapping("/search/{name}")
+    public List<Ingredients> getIngredientsByNameContains(@PathVariable("name") String name) {
+        return ingredientsService.findIngredientByNameLike(name);
     }
 
     @PostMapping(consumes={"application/json"})

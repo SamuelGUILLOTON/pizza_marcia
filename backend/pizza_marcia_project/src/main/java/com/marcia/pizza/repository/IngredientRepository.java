@@ -10,6 +10,5 @@ import java.util.List;
 public interface IngredientRepository extends JpaRepository<Ingredients,Long> {
 
     // SELECT * FROM Ingredients WHERE name=name
-    List<Ingredients> findByName(String name);
-
+    List<Ingredients> findByNameLike(String name);
 }
