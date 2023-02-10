@@ -11,6 +11,5 @@ import java.util.List;
 public interface  PizzaRepository extends JpaRepository<Pizzas,Long> {
 
     // SELECT * FROM Pizza WHERE name=name
-    List<Pizzas> findByName(String name);
     List<Pizzas> findByNameLike(String name);
 }
