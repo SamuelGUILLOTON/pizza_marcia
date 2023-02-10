@@ -35,7 +35,6 @@ public class Pizzas {
                 @JoinColumn(name = "ingredients_id", referencedColumnName = "id")
         }
     )
-    @JsonManagedReference
     private Set<Ingredients> ingredients;
 
     public Pizzas(String name, Integer price, Integer ingredients_id) {

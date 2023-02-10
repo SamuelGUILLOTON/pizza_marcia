@@ -21,7 +21,6 @@ public class Ingredients {
     private String image;
 
     @ManyToMany(mappedBy = "ingredients", fetch = FetchType.LAZY)
-    @JsonBackReference
     private Set<Pizzas> pizzas;
     public Ingredients(String name) {
 
