@@ -27,6 +27,15 @@ function PizzaEditForm({ pizzaData, ingredients, mode }) {
   const [ingredientsIds, setIngredientsIds] = useState(
     data.ingredients.map((ingredient) => ingredient.id)
   );
+  const [errors, setErrors] = useState({
+    name: false,
+    price: false,
+    image: false,
+  });
+
+  function setError(name) {
+    setErrors((oldErrors) => ({ ...oldErrors, [name]: true }));
+  }
 
   function setField(name) {
     return (value) => {
@@ -49,6 +58,7 @@ function PizzaEditForm({ pizzaData, ingredients, mode }) {
           variant="outlined"
           value={data.name}
           onChange={setField("name")}
+          error={errors.name}
         />
       </FormControl>
       <FormControl className="pizza-edit-form-input" sx={{ m: 1 }}>
@@ -66,6 +76,7 @@ function PizzaEditForm({ pizzaData, ingredients, mode }) {
               min: 0,
             },
           }}
+          error={errors.price}
         />
       </FormControl>
       <FormControl className="pizza-edit-form-input" sx={{ m: 1 }}>
@@ -74,10 +85,11 @@ function PizzaEditForm({ pizzaData, ingredients, mode }) {
           label="Image URL"
           required
           id="pizza-image"
-          type="text"
+          type="url"
           variant="outlined"
           value={data.image}
           onChange={setField("image")}
+          error={errors.image}
         />
       </FormControl>
       <FormControl className="pizza-edit-form-input" sx={{ m: 1 }}>
@@ -110,6 +122,7 @@ function PizzaEditForm({ pizzaData, ingredients, mode }) {
         <SubmitButtons
           mode={mode}
           data={{ ...data, ingredients: ingredientsIds }}
+          setError={setError}
         />
       </FormControl>
     </FormGroup>
