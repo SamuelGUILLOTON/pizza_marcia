@@ -15,7 +15,7 @@ public class IngredientsWs {
     @Autowired
     private IngredientService ingredientsService;
 
-    @GetMapping("/ingredients")
+    @GetMapping("/ingredient")
     public List<Ingredients> getAllIngredients() {
         return ingredientsService.getAllIngredients();
     }

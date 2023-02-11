@@ -1,5 +1,4 @@
 import {
-  Button,
   FormControl,
   FormGroup,
   InputLabel,
@@ -8,17 +7,26 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import { string, array } from "prop-types";
+import { string, array, object } from "prop-types";
 import React, { useState } from "react";
+import SubmitButtons from "./components/SubmitButtons/SubmitButtons";
 import "./PizzaEditForm.css";
 
-function PizzaEditForm({ ingredients, mode }) {
-  const [data, setData] = useState({
-    name: "",
-    price: "",
-    image: "",
-    ingredients: [],
-  });
+function getValueOrDefault(data) {
+  return {
+    id: data.id ?? "",
+    name: data.name ?? "",
+    price: data.price ?? "",
+    image: data.image ?? "",
+    ingredients: data.ingredients ?? [],
+  };
+}
+
+function PizzaEditForm({ pizzaData, ingredients, mode }) {
+  const [data, setData] = useState(getValueOrDefault(pizzaData));
+  const [ingredientsIds, setIngredientsIds] = useState(
+    data.ingredients.map((ingredient) => ingredient.id)
+  );
 
   function setField(name) {
     return (value) => {
@@ -79,8 +87,8 @@ function PizzaEditForm({ ingredients, mode }) {
           labelId="pizza-ingredients-label"
           id="pizza-ingredients"
           multiple
-          value={data.ingredients}
-          onChange={setField("ingredients")}
+          value={ingredientsIds}
+          onChange={(event) => setIngredientsIds(event.target.value)}
           input={<OutlinedInput label="Ingredients" />}
           MenuProps={{
             PaperProps: {
@@ -99,9 +107,10 @@ function PizzaEditForm({ ingredients, mode }) {
         </Select>
       </FormControl>
       <FormControl className="pizza-edit-form-input" sx={{ m: 1 }}>
-        <Button variant="contained" fullWidth style={{ fontWeight: 600 }}>
-          {mode === "edit" ? "Edit" : "Save"}
-        </Button>
+        <SubmitButtons
+          mode={mode}
+          data={{ ...data, ingredients: ingredientsIds }}
+        />
       </FormControl>
     </FormGroup>
   );
@@ -109,11 +118,13 @@ function PizzaEditForm({ ingredients, mode }) {
 
 PizzaEditForm.defaultProps = {
   ingredients: [],
+  pizzaData: {},
   mode: "",
 };
 
 PizzaEditForm.propTypes = {
   ingredients: array,
+  pizzaData: object,
   mode: string,
 };
 
