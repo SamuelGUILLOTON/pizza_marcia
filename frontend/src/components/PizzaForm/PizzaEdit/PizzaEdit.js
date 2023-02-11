@@ -17,6 +17,7 @@ function PizzaEdit() {
         const ingredients = await (await fetch("/api/ingredient")).json();
         setData({ pizzaData, ingredients, loading: false });
       } catch (err) {
+        setData({ pizzaData: { error: true } });
         throw new Error("API Error");
       }
     }
@@ -25,6 +26,9 @@ function PizzaEdit() {
     }
   }, []);
 
+  if (data.pizzaData.error !== undefined) {
+    return <h1 style={{ textAlign: "center" }}>Pizza not found</h1>;
+  }
   return (
     !data.loading && (
       <>

@@ -32,5 +32,6 @@ module.exports = {
     ],
     "react/forbid-prop-types": 0,
     "linebreak-style": ["error", "windows"],
+    "react/jsx-no-bind": 0,
   },
 };
