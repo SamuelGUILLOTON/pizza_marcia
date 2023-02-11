@@ -26,7 +26,7 @@ public class Pizzas {
     @Column(name = "image", nullable = true)
     private String image;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "pizzas_ingredients",
         joinColumns = {
                 @JoinColumn(name = "pizza_id", referencedColumnName = "id")
