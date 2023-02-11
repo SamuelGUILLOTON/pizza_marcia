@@ -1,9 +1,11 @@
 package com.marcia.pizza.service.implement;
 
 import com.marcia.pizza.pojo.Pizzas;
+import com.marcia.pizza.pojo.ApiResponse;
 import com.marcia.pizza.repository.PizzaRepository;
 import com.marcia.pizza.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -36,19 +38,54 @@ public class PizzaServiceImpl implements PizzaService {
     }
 
     @Override
-    public void createPizza(Pizzas pizza) {
-        pizzaRepository.save(pizza);
+    public ApiResponse createPizza(Pizzas pizza) {
+        try {
+            pizzaRepository.save(pizza);
+            ApiResponse apiResponse = new ApiResponse();
+            apiResponse.setId(pizza.getId());
+            apiResponse.setSuccess(true);
+            return apiResponse;
+        } catch (  DataAccessException ex) {
+            ApiResponse apiResponse = new ApiResponse();
+            apiResponse.setMessage("erreur");
+            apiResponse.setSuccess(false);
+            return apiResponse;
+        }
     }
 
     @Override
-    public void updatePizza(Pizzas pizza, Long id) {
-        Pizzas updatedPizza = this.getPizzaById(id);
-        updatedPizza.setName(pizza.getName());
-        pizzaRepository.save(updatedPizza);
+    public ApiResponse updatePizza(Pizzas pizza, Long id) {
+        try {
+            Pizzas updatedPizza = this.getPizzaById(id);
+            updatedPizza.setName(pizza.getName());
+            updatedPizza.setPrice(pizza.getPrice());
+            updatedPizza.setImage(pizza.getImage());
+            updatedPizza.setIngredients(pizza.getIngredients());
+            pizzaRepository.save(updatedPizza);
+            ApiResponse apiResponse = new ApiResponse();
+            apiResponse.setId(id);
+            apiResponse.setSuccess(true);
+            return apiResponse;
+        } catch ( DataAccessException ex) {
+            ApiResponse apiResponse = new ApiResponse();
+            apiResponse.setMessage("erreur");
+            apiResponse.setSuccess(false);
+            return apiResponse;
+        }
     }
     @Override
-    public void deletePizza(Long id) {
-        pizzaRepository.deleteById(id);
+    public ApiResponse deletePizza(Long id) {
+        try {
+            pizzaRepository.deleteById(id);
+            ApiResponse apiResponse = new ApiResponse();
+            apiResponse.setSuccess(true);
+            return apiResponse;
+        } catch ( DataAccessException ex) {
+            ApiResponse apiResponse = new ApiResponse();
+            apiResponse.setMessage("erreur");
+            apiResponse.setSuccess(false);
+            return apiResponse;
+        }
     }
 
 }

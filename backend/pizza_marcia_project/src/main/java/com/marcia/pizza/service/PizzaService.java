@@ -1,5 +1,6 @@
 package com.marcia.pizza.service;
 
+import com.marcia.pizza.pojo.ApiResponse;
 import com.marcia.pizza.pojo.Pizzas;
 
 import java.util.List;
@@ -12,9 +13,9 @@ public interface PizzaService {
 
     List<Pizzas> findPizzasByNameLike(String name);
 
-    void createPizza(Pizzas pizza);
+    ApiResponse createPizza(Pizzas pizza);
 
-    void updatePizza(Pizzas pizza, Long id);
+    ApiResponse updatePizza(Pizzas pizza, Long id);
 
-    void deletePizza(Long id);
+    ApiResponse deletePizza(Long id);
 }

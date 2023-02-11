@@ -1,5 +1,6 @@
 package com.marcia.pizza.ws;
 
+import com.marcia.pizza.pojo.ApiResponse;
 import com.marcia.pizza.pojo.Pizzas;
 import com.marcia.pizza.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,28 +33,18 @@ public class PizzasWs {
     }
 
     @PostMapping("/pizza")
-    public void createPizza(@RequestBody Pizzas pizza){
-
-        pizzaService.createPizza(pizza);
+    public ApiResponse createPizza(@RequestBody Pizzas pizza){
+        return pizzaService.createPizza(pizza);
     }
 
     @PutMapping("/pizza/{id}")
-    public boolean updatePizza(@RequestBody Pizzas pizza,
-                                @PathVariable("id") Long id){
-        pizzaService.updatePizza(pizza,id);
-        return true;
+    public ApiResponse updatePizza(@RequestBody Pizzas pizza,
+                                   @PathVariable("id") Long id){
+       return pizzaService.updatePizza(pizza,id);
     }
 
     @DeleteMapping("/pizza/{id}")
-    public boolean deleteCatalogue(@PathVariable("id") Long id){
-
-        if (pizzaService.getPizzaById(id) != null) {
-            pizzaService.deletePizza(id);
-            return true;
-        } else {
-            return false;
-        }
-
-
+    public ApiResponse deleteCatalogue(@PathVariable("id") Long id){
+            return pizzaService.deletePizza(id);
     }
 }
