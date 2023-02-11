@@ -15,7 +15,7 @@ public class PizzasWs {
     @Autowired
     private PizzaService pizzaService;
 
-    @GetMapping("/pizzas")
+    @GetMapping("/pizza")
     public List<Pizzas> getAllPizzas() {
         return pizzaService.getAllPizzas();
     }
@@ -26,7 +26,7 @@ public class PizzasWs {
         return pizzaService.getPizzaById(id);
     }
 
-    @GetMapping("/pizzas/search/{name}")
+    @GetMapping("/pizza/search/{name}")
     public List<Pizzas> getPizzaByNameContains(@PathVariable("name") String name) {
         return pizzaService.findPizzasByNameLike(name);
     }
