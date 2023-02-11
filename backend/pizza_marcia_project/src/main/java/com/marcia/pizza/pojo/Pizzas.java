@@ -21,7 +21,7 @@ public class Pizzas {
     private String name;
 
     @Column(name = "price", nullable = false)
-    private Integer price;
+    private Float price;
 
     @Column(name = "image", nullable = true)
     private String image;
@@ -37,7 +37,7 @@ public class Pizzas {
     )
     private Set<Ingredients> ingredients;
 
-    public Pizzas(String name, Integer price, Integer ingredients_id) {
+    public Pizzas(String name, Float price, Integer ingredients_id) {
         this.name = name;
         this.price = price;
     }
@@ -61,12 +61,12 @@ public class Pizzas {
         this.name = name;
     }
 
-    public Integer getPrice() {
+    public Float getPrice() {
 
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Float price) {
 
         this.price = price;
     }
