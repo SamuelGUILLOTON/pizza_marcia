@@ -9,42 +9,42 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = ApiRegistration.PIZZA_WS)
+@RequestMapping(value = ApiRegistration.API_WS)
 public class PizzasWs {
 
     @Autowired
     private PizzaService pizzaService;
 
-    @GetMapping
+    @GetMapping("/pizzas")
     public List<Pizzas> getAllPizzas() {
         return pizzaService.getAllPizzas();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/pizza/{id}")
     public Pizzas getPizzaById(@PathVariable("id") Long id){
 
         return pizzaService.getPizzaById(id);
     }
 
-    @GetMapping("/search/{name}")
+    @GetMapping("/pizzas/search/{name}")
     public List<Pizzas> getPizzaByNameContains(@PathVariable("name") String name) {
         return pizzaService.findPizzasByNameLike(name);
     }
 
-    @PostMapping(consumes={"application/json"})
+    @PostMapping("/pizza")
     public void createPizza(@RequestBody Pizzas pizza){
 
         pizzaService.createPizza(pizza);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/pizza/{id}")
     public boolean updatePizza(@RequestBody Pizzas pizza,
                                 @PathVariable("id") Long id){
         pizzaService.updatePizza(pizza,id);
         return true;
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/pizza/{id}")
     public boolean deleteCatalogue(@PathVariable("id") Long id){
 
         if (pizzaService.getPizzaById(id) != null) {

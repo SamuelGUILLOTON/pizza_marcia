@@ -9,42 +9,42 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = ApiRegistration.INGREDIENT_WS)
+@RequestMapping(value = ApiRegistration.API_WS)
 public class IngredientsWs {
 
     @Autowired
     private IngredientService ingredientsService;
 
-    @GetMapping
+    @GetMapping("/ingredients")
     public List<Ingredients> getAllIngredients() {
         return ingredientsService.getAllIngredients();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/ingredient/{id}")
     public Ingredients getIngredientById(@PathVariable("id") Long id){
 
         return ingredientsService.getIngredientById(id);
     }
 
-    @GetMapping("/search/{name}")
+    @GetMapping("/ingredient/search/{name}")
     public List<Ingredients> getIngredientsByNameContains(@PathVariable("name") String name) {
         return ingredientsService.findIngredientByNameLike(name);
     }
 
-    @PostMapping(consumes={"application/json"})
+    @PostMapping("/ingredient")
     public void createIngredient(@RequestBody Ingredients ingredient){
 
         ingredientsService.createIngredient(ingredient);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/ingredient/{id}")
     public void updateIngredient(@RequestBody Ingredients ingredient,
                             @PathVariable("id") Long id){
         ingredientsService.updateIngredient(ingredient,id);
 
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/ingredient/{id}")
     public void ingredientCatalogue(@PathVariable("id") Long id){
           ingredientsService.deleteIngredient(id);
     }
