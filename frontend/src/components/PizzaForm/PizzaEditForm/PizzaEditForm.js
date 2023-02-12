@@ -121,7 +121,11 @@ function PizzaEditForm({ pizzaData, ingredients, mode }) {
       <FormControl className="pizza-edit-form-input" sx={{ m: 1 }}>
         <SubmitButtons
           mode={mode}
-          data={{ ...data, ingredients: ingredientsIds }}
+          data={{
+            ...data,
+            ingredients: ingredientsIds,
+            price: parseFloat(data.price),
+          }}
           setError={setError}
         />
       </FormControl>

@@ -7,3 +7,15 @@
   width: 500px;
   border-radius: 8px;
 }
+
+@media screen and (max-width: 600px) {
+  .pizza-edit-form-container {
+    align-items: center;
+    width: 100%;
+  }
+
+  .pizza-edit-form-input {
+    width: 90%;
+    border-radius: 8px;
+  }
+}

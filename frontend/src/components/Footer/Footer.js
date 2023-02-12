@@ -1,12 +1,14 @@
 import React from "react";
+import "./Footer.css";
 
 function Footer() {
   return (
-    <footer className="footer">
-      <p className="footer__copyright">
-        Made by Louis, Samuel, Valentin, James
-      </p>
-    </footer>
+    <>
+      <div className="spacing" />
+      <footer className="footer-container">
+        <p>Made by Louis, Samuel, Valentin, James with ❤️</p>
+      </footer>
+    </>
   );
 }
 

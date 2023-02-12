@@ -1,0 +1,4 @@
+.pizza-card-actions-container {
+  display: flex;
+  justify-content: space-around;
+}
