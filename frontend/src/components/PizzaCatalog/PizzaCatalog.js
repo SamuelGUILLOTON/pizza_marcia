@@ -1,11 +1,14 @@
-import { CircularProgress } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import { array } from "prop-types";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PizzaCard from "../PizzaCard/PizzaCard";
 import "./PizzaCatalog.css";
 
 function PizzaCards({ pizzas }) {
-  return (
+  const navigate = useNavigate();
+
+  return pizzas.length !== 0 ? (
     <div className="pizza-cards-container">
       {pizzas.map((pizza) => (
         <PizzaCard
@@ -18,6 +21,13 @@ function PizzaCards({ pizzas }) {
           ingredients={pizza.ingredients}
         />
       ))}
+    </div>
+  ) : (
+    <div className="empty-catalog-container">
+      <h1>There is currenctly 0 pizza in the catalog.</h1>
+      <Button variant="contained" onClick={() => navigate("/pizzas/create")}>
+        Create one
+      </Button>
     </div>
   );
 }
