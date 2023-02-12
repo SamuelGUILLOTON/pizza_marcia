@@ -33,6 +33,12 @@ body {
 }
 
 .navbar-title:hover {
-  color: rgb(180, 132, 224);
+  color: #63a7f4;
   transition: all 0.1s;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar-title {
+    font-size: 14px;
+  }
 }

@@ -1,0 +1,22 @@
+.loading-circle-container {
+  display: flex;
+  justify-content: center;
+}
+
+.loading-circle {
+  text-align: center;
+  margin-top: 5em;
+}
+
+.pizza-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.pizza-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 1em 0;
+}

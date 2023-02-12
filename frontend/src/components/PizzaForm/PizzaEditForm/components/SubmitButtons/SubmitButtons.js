@@ -5,7 +5,7 @@ import React from "react";
 
 function handleRedirect(serverResponse, navigate) {
   if (serverResponse.success) {
-    return navigate("/catalog");
+    return navigate("/pizzas");
   }
   return navigate("/server-error");
 }

@@ -1,56 +1,56 @@
 import React from "react";
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Typography,
-} from "@mui/material";
+import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import { string, array, number } from "prop-types";
+import PizzaCardActions from "./components/PizzaCardActions";
 
-function PizzaCard({ name, price, image, ingredients }) {
+function PizzaCard({ className, id, name, price, image, ingredients }) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="200"
-          image={image}
-          alt="Pizza Chèvre Miel"
-          sx={{ width: 350, height: 200 }}
-        />
+    <Card sx={{ maxWidth: 345 }} className={className}>
+      <CardMedia
+        component="img"
+        height="200"
+        image={image}
+        alt={name}
+        sx={{ width: 350, height: 200 }}
+      />
 
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {name}
-          </Typography>
-          <Typography gutterBottom variant="h5" component="div">
-            {price.toString()}
-          </Typography>
-          <Typography gutterBottom variant="h5" component="div">
-            {ingredients.map((ingredient) => ingredient.name)}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Blablablablablabla
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+      <CardContent>
+        <Typography variant="subtitle1" component="div">
+          Name:
+        </Typography>
+        <span>{name}</span>
+        <Typography variant="subtitle1" component="div">
+          Price:
+        </Typography>
+        <span>{price.toString()} €</span>
+        {ingredients.length !== 0 && (
+          <>
+            <Typography variant="subtitle1" component="div">
+              Ingredients:{" "}
+            </Typography>
+            <span>
+              {ingredients.map((ingredient) => `${ingredient.name}, `)}
+            </span>
+          </>
+        )}
+      </CardContent>
+      <PizzaCardActions pizzaId={id} />
     </Card>
   );
 }
 
 PizzaCard.defaultProps = {
-  name: "Chèvre miel",
-  price: 11.99,
-  image:
-    "https://lelocalapizzas.fr/wp-content/uploads/2022/02/recette-pizza-chevre-miel.jpg",
-  ingredients: [
-    { id: 1, name: "Miel", image: "" },
-    { id: 2, name: "Fromage de chèvre", image: "" },
-  ],
+  id: null,
+  className: "",
+  name: "",
+  price: 0,
+  image: "",
+  ingredients: [],
 };
 
 PizzaCard.propTypes = {
+  id: number,
+  className: string,
   name: string,
   price: number,
   image: string,
