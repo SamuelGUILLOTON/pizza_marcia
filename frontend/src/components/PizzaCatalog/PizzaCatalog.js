@@ -24,7 +24,7 @@ function PizzaCards({ pizzas }) {
     </div>
   ) : (
     <div className="empty-catalog-container">
-      <h1>There is currenctly 0 pizza in the catalog.</h1>
+      <h1>There is currently 0 pizza in the catalog.</h1>
       <Button variant="contained" onClick={() => navigate("/pizzas/create")}>
         Create one
       </Button>
