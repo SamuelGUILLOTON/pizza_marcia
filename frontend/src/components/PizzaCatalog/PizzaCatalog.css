@@ -20,3 +20,8 @@
   justify-content: space-between;
   margin: 1em 0;
 }
+
+.empty-catalog-container {
+  text-align: center;
+  margin-top: 5em;
+}
